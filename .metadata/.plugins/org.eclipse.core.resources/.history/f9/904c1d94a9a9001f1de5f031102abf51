@@ -1,0 +1,13 @@
+package model.gem;
+
+abstract class Gem {
+	private int value;
+	
+	public Gem(int value) {
+		this.value = value;
+	}
+	
+	public int getValue() {
+		return this.value;
+	}
+}

@@ -1,0 +1,5 @@
+package model.gem;
+
+public class BigGem {
+
+}

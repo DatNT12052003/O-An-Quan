@@ -1,0 +1,53 @@
+package model.gameboard;
+
+import model.cell.Cell;
+import model.cell.SemiCircle;
+import model.cell.Square;
+import model.gem.Gem;
+
+public class GameBoard {
+	private Cell[] gameboard = new Cell[12];
+	
+	public GameBoard() {
+		for(int i=0; i<12; i++) {
+			if(i%6==0) {
+				this.gameboard[i] = new SemiCircle();
+			} else {
+				this.gameboard[i] = new Square();
+			}
+		}
+	}
+	
+	public void showGameBoardxxx() {
+		for (int i=0; i<12;i++) {
+			this.gameboard[i].showCell();
+		}
+	}
+	
+	public int moveGemClockwise1Cell(int i) {
+		int j =1;
+		for (Gem gem : this.gameboard[i].getGemInCell()) {
+			if ((i+j)<=11) {
+				this.gameboard[i+j].getGemInCell().add(gem);
+				j++;
+			}else {
+				j=-i;
+			}
+		}
+		this.gameboard[i].getGemInCell().clear();
+		return j;
+	}
+	
+//	public void moveGemClockwise(int i) {
+//		int j = this.moveGemClockwise1Cell(i);
+//		while (this.gameboard[j+1].getGemInCell().size() != 0) {
+//			j = this.moveGemClockwise1Cell(j+1);
+//		}
+//	}
+	
+	
+	public void moveGemCounterclockwise1Turn() {
+		
+	}
+	
+}

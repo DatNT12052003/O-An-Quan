@@ -1,0 +1,11 @@
+package application;
+
+import model.gameboard.GameBoard;
+import model.match.Match;
+import model.player.Player;
+
+public class App {
+	public static void main(String[] args) {
+		
+	}
+}

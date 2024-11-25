@@ -1,0 +1,93 @@
+package model.gameboard;
+
+import model.cell.Cell;
+import model.cell.SemiCircle;
+import model.cell.Square;
+import model.gem.Gem;
+
+public class GameBoard {
+	private Cell[] gameboard = new Cell[12];
+	
+	public GameBoard() {
+		for(int i=0; i<12; i++) {
+			if(i%6==0) {
+				this.gameboard[i] = new SemiCircle();
+			} else {
+				this.gameboard[i] = new Square();
+			}
+		}
+	}
+	
+	public void showGameBoardxxx() {
+		for (int i=0; i<12;i++) {
+			this.gameboard[i].showCell();
+		}
+	}
+	
+	public int moveGemClockwise1Cell(int i) {
+		int j = 1;
+		for (Gem gem : this.gameboard[i].getGemInCell()) {
+			this.gameboard[(i+j)%12].getGemInCell().add(gem);
+			j++;
+		}
+		this.gameboard[i].getGemInCell().clear();
+		System.out.println((i+j)%12);
+		return (i+j)%12;
+	}
+	
+	public int moveGemClockwise(int index) {
+		int k = this.moveGemClockwise1Cell(index);
+		while (this.gameboard[k].getGemInCell().size() != 0) {
+			if ((k==0)||(k==6)) {
+				return 0;
+			}else {
+				k = this.moveGemClockwise1Cell(k);
+			}
+		}
+		int score = 0;
+		while(this.gameboard[k].getGemInCell().size()==0) {
+			if ((this.gameboard[(k+1)%12].getGemInCell().size()!=0)) {
+				score = this.gameboard[(k+1)%12].getValue();
+				this.gameboard[(k+1)%12].getGemInCell().clear();
+			}
+			k=(k+2)%12;
+		}
+		System.out.println("Nhận: " + score);
+		return score;
+	}
+	
+	public int moveGemCounterclockwise1Cell(int i) {
+		int j = 1;
+		for (Gem gem : this.gameboard[i].getGemInCell()) {
+			this.gameboard[(12+i-j)%12].getGemInCell().add(gem);
+			j++;
+		}
+		this.gameboard[i].getGemInCell().clear();
+		return (12+i-j)%12;
+	}
+	
+	public int moveGemCounterclockwise(int index) {
+		int k = this.moveGemCounterclockwise1Cell(index);
+		while (this.gameboard[k].getGemInCell().size() != 0) {
+			if ((k==0)||(k==6)) {
+				return 0;
+			}else {
+				k = this.moveGemCounterclockwise1Cell(k);
+			}
+		}
+		int score = this.gameboard[k-1].getValue();
+		this.gameboard[k-1].getGemInCell().clear();
+		return score;
+	}
+	
+	
+	public int recieveGem(int i) {
+		if ((this.gameboard[i+1].getGemInCell().size()!=0)) {
+			int score = this.gameboard[(i+1)%12].getValue();
+			this.gameboard[i+1].getGemInCell().clear();
+			return score;
+		}
+		return 0;
+	}
+	
+}

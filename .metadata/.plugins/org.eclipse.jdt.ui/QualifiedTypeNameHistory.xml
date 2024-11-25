@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="model.cell.Square"/>
+    <fullyQualifiedTypeName name="model.gem.Gem"/>
+    <fullyQualifiedTypeName name="model.cell.SemiCircle"/>
+    <fullyQualifiedTypeName name="model.gem.BigGem"/>
+    <fullyQualifiedTypeName name="model.gem.SmallGem"/>
+    <fullyQualifiedTypeName name="model.gameboard.GameBoard"/>
+    <fullyQualifiedTypeName name="model.match.Match"/>
+    <fullyQualifiedTypeName name="model.player.Player"/>
+</qualifiedTypeNameHistroy>

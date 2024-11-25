@@ -1,0 +1,12 @@
+package model.gem;
+
+public class BigGem extends Gem{
+	public BigGem() {
+		super(5);
+	}
+	
+	public void showBigGem() {
+		System.out.println("Big Gem: " + this.getId());
+	}
+}
+

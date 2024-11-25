@@ -1,0 +1,47 @@
+package test;
+
+import java.util.Scanner;
+
+import model.gameboard.GameBoard;
+import model.match.Match;
+import model.player.Player;
+
+public class TestMatch {
+
+	public static void main(String[] args) {
+		int count = 0;
+		Player player1 = new Player("20215028", "Dat");	
+		Player player2 = new Player("20215038", "Duc");	
+		
+		GameBoard gameBoard = new GameBoard();
+		
+		Match match = new Match("123", player1, player2, gameBoard, "00:00:00");
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		match.showMatch();
+		
+		while(!match.getGameBoard().isStopFlag()) {
+			if(count%2==0) {
+				match.setTurnPlayer(true);
+			}else {
+				match.setTurnPlayer(false);
+			}
+			if(match.isTurnPlayer()) {
+				System.out.println("Player 1 choi: ");
+			}else {
+				System.out.println("Player 2 choi: ");
+			}
+			
+			int i = scanner.nextInt();
+			int direction = scanner.nextInt();
+			
+			match.playerPlay(i, direction, match.isTurnPlayer());
+			
+			match.showMatch();
+			count++;
+		}
+		
+	}
+
+}

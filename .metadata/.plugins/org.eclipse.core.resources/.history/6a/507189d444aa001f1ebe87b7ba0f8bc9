@@ -1,0 +1,28 @@
+package test;
+
+import model.gameboard.GameBoard;
+import model.match.Match;
+import model.player.Player;
+
+public class TestCreateMtach {
+
+	public static void main(String[] args) {
+		Player player1 = new Player("20215028", "Dat");	
+		Player player2 = new Player("20215038", "Duc");	
+		
+		GameBoard gameBoard = new GameBoard();
+		
+		Match match = new Match("123", player1, player2, gameBoard, "00:00:00");
+		
+		match.showMatch();
+		
+		match.getGameBoard().moveGemCounterclockwise(5);
+
+		
+		System.out.println("----------------------------------");
+		
+		match.showMatch();
+
+	}
+
+}
